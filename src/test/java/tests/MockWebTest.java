@@ -5,7 +5,7 @@ import com.microsoft.playwright.options.AriaRole;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
+//Copilot and claude code
 import java.nio.file.Paths;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -69,49 +69,45 @@ public class MockWebTest {
     }
 
 
-        @Test
-       public void routeResumeTest()
-        {
-        //route.resume(
-            page.getByPlaceholder("you@email.com").fill("rahulshetty1@yahoo.com");
-            page.getByLabel("Password").fill("Magiclife1!");
-            //locator
-            page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign In")).click();
+    @Test
+    public void routeResumeTest() {
+        page.getByPlaceholder("you@email.com").fill("rahulshetty1@yahoo.com");
+        page.getByLabel("Password").fill("Magiclife1!");
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign In")).click();
 
-            assertThat(page.getByRole(AriaRole.LINK,
-                    new Page.GetByRoleOptions().setName("Browse Events →"))).isVisible();
-
-            //Bookings
+        assertThat(page.getByRole(AriaRole.LINK,
+                new Page.GetByRoleOptions().setName("Browse Events →"))).isVisible();
 
         page.getByTestId("nav-bookings").click();
 
-        page.route("**/api/bookings**",route-> route.resume(
+        page.route("**/api/bookings**", route -> route.resume(
                 new Route.ResumeOptions().setUrl("https://api.eventhub.rahulshettyacademy.com/api/bookings/72116")
         ));
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("View Details")).first().click();
 
-        assertThat(page.getByText("Access Denied")).isVisible();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        assertThat(page.getByText("(?i)access denied")).isVisible();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

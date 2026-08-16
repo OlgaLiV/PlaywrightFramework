@@ -23,19 +23,15 @@ public class FrameworkBuildDataDrivenTest extends TestBase{
 
     }
 
-
-
     @Test(groups = {"framework"},dataProvider = "eventBookingData", description = "Create Event -Book that event and verify if its booked")
     public void DemoTest(HashMap<String,String> data)
     {
-
-
         LoginPage loginPage = new LoginPage(page,base_url);
         DashboardPage dashboardPage=loginPage.loginToApplication();
         dashboardPage.waitForEventsToLoad();
         AdminEventsPage adminEventsPage = new AdminEventsPage(page);
         adminEventsPage.goTo();
-        //Step 1 - Create Event from Admin pageeventTitle
+        //Step 1 - Create Event from Admin pageEventTitle
         adminEventsPage.createEvent(
                 data.get("titlePrefix"),
                 data.get("description"),
