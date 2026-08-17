@@ -39,6 +39,7 @@ public class BookingCancellationTest extends TestBase {
         bookingDetailsPage.cancelBooking();
 
         // Step 7: Verify cancellation success message appears and redirects to bookings page
+        page.waitForTimeout(3000);
         bookingDetailsPage.verifyBookingCancellationSuccess();
 
         // Step 8: Verify the booking count decreased by 1
